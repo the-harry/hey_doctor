@@ -127,6 +127,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 1.0)
     rake (13.0.3)
+    redis (4.2.5)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.1)
@@ -165,6 +166,7 @@ PLATFORMS
 DEPENDENCIES
   dotenv-rails
   pg
+  redis
   rspec-rails
   stalker!
 

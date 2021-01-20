@@ -20,6 +20,7 @@ require "action_cable/engine"
 Bundler.require(*Rails.groups)
 require "stalker"
 require 'dotenv-rails'
+require 'redis'
 
 module Dummy
   class Application < Rails::Application

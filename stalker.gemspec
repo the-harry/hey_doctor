@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'rspec-rails'
   spec.add_development_dependency 'dotenv-rails'
+  spec.add_development_dependency 'redis'
 
   spec.add_dependency "rails", "~> 6.1.1"
 end
