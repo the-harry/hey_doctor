@@ -1,4 +1,4 @@
-module Stalker
-  class ApplicationJob < ActiveJob::Base
-  end
+# frozen_string_literal: true
+
+class Stalker::ApplicationJob < ActiveJob::Base
 end

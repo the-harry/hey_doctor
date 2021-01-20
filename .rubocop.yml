@@ -1,0 +1,31 @@
+AllCops:
+  TargetRubyVersion: 2.7.2
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'spec/dummy/**/*'
+  NewCops: enable
+
+Metrics/MethodLength:
+  Max: 20
+
+Layout/LineLength:
+  Max: 80
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - spec/**/*
