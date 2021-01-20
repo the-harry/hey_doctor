@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: .devops/dockerfiles/Dockerfile
+    volumes:
+      - .:/stalker
+    depends_on:
+      - 'redis'
+      - 'postgres'
+    ports:
+      - '8000:8000'
+    tty: true
+    stdin_open: true
+    env_file:
+      - 'spec/dummy/.env'
+
+  postgres:
+    image: postgres:13.1-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: passwd
+
+  redis:
+    image: redis:6-alpine
+
+networks:
+  default:
+    external:
+      name: dev-net
