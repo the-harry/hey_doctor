@@ -26,6 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'redis'
   spec.add_development_dependency 'rspec-rails'
   spec.add_development_dependency 'rubocop-rails'
+  spec.add_development_dependency 'simplecov'
 
   spec.required_ruby_version = '>= 2.7.0'
   spec.add_dependency 'rails', '~> 6.1.1'
