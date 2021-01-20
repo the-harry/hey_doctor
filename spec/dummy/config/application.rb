@@ -25,7 +25,7 @@ require 'redis'
 module Dummy
   class Application < Rails::Application
     config.load_defaults Rails::VERSION::STRING.to_f
-
+    config.autoload_paths += Dir[Rails.root.join('lib')]
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
