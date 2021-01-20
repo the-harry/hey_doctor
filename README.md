@@ -21,6 +21,15 @@ Or install it yourself as:
 $ gem install stalker
 ```
 
+create redis initialize
+
+mount route
+
+
+## Developing
+
+bundle exec rails db:setup
+
 ## Contributing
 Contribution directions go here.
 
