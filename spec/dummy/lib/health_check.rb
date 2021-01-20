@@ -1,21 +1,25 @@
 class HealthCheck
   def self.health
     {
-      app: application_status,
-      database: database_status,
-      redis: redis_status
+      app: ApplicationHealth.status,
+      database: DatabaseHealth.status,
+      redis: RedisHealth.status
     }.to_json
   end
+end
 
-  def self.application_status
+class ApplicationHealth
+  def self.status
     {
       message: 'Application is running',
       success: true
     }
   end
+end
 
-  def self.database_status
-    if database_connected?
+class DatabaseHealth
+  def self.status
+    if connected?
       {
         message: 'Database is connected',
         success: true
@@ -28,8 +32,18 @@ class HealthCheck
     end
   end
 
-  def self.redis_status
-    if redis_connected?
+  def self.connected?
+    ActiveRecord::Base.connection.execute('select 1')
+
+    true
+  rescue ActiveRecord::StatementInvalid, ActiveRecord::NoDatabaseError
+    false
+  end
+end
+
+class RedisHealth
+  def self.status
+    if connected?
       {
         message: 'Redis is connected',
         success: true
@@ -42,15 +56,7 @@ class HealthCheck
     end
   end
 
-  def self.database_connected?
-    ActiveRecord::Base.connection.execute('select 1')
-
-    true
-  rescue ActiveRecord::StatementInvalid, ActiveRecord::NoDatabaseError
-    false
-  end
-
-  def self.redis_connected?
+  def self.connected?
     Redis.current.get('viva_a_sociedade_alternativa')
 
     true
