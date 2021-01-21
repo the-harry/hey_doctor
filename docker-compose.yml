@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: .devops/dockerfiles/Dockerfile
-    command: "rails s -b 0.0.0.0 -p 8000"
+    command: "bundle exec rails s -b 0.0.0.0 -p 8000"
     volumes:
       - .:/stalker
     depends_on:
