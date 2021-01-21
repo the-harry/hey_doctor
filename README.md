@@ -75,6 +75,17 @@ rubocop -A && rspec
 
 Minimum coverage is set to 95%.
 
+## Releasing
+
+Change the tag in `lib/stalker/version.rb` each release using [SEMVER](https://semver.org/lang/pt-BR/).
+
+```bash
+bundle exec rake build
+# build gem in pkg/stalker-TAG.gem
+
+bundle exec rake release
+# Ask for rubygems credentials and makes the release
+```
 ## Contributing
 
 Fell free to send a PR.
