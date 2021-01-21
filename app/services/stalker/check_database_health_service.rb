@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Stalker::DatabaseHealth
+class Stalker::CheckDatabaseHealthService
   class << self
     SUCCESS = {
       message: 'Database is connected',
@@ -17,7 +17,7 @@ class Stalker::DatabaseHealth
       success: false
     }.freeze
 
-    def status
+    def call
       return ERROR unless connected?
       return MIGRATION_PENDING if needs_migration?
 

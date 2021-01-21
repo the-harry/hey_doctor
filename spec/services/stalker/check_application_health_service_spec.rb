@@ -3,8 +3,8 @@
 require 'rails_helper'
 require 'net/http'
 
-RSpec.describe Stalker::ApplicationHealth do
-  describe '.status' do
+RSpec.describe Stalker::CheckApplicationHealthService do
+  describe '.call' do
     let(:http) { double }
 
     before do
@@ -24,7 +24,7 @@ RSpec.describe Stalker::ApplicationHealth do
       let(:response_double) { double(Net::HTTP, code: '200') }
 
       it 'respond with success' do
-        expect(described_class.status).to eq(expected_response)
+        expect(described_class.call).to eq(expected_response)
       end
     end
 
@@ -39,7 +39,7 @@ RSpec.describe Stalker::ApplicationHealth do
       let(:response_double) { double(Net::HTTP, code: '500') }
 
       it 'respond with success' do
-        expect(described_class.status).to eq(expected_response)
+        expect(described_class.call).to eq(expected_response)
       end
     end
   end

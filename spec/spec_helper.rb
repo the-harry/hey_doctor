@@ -4,18 +4,10 @@ require 'simplecov'
 require 'rack/test'
 
 SimpleCov.start 'rails' do
-  add_filter '/app/models/application_record.rb'
-  add_filter '/app/mailers/application_mailer.rb'
-  add_filter '/app/jobs/application_job.rb'
-  add_filter 'app/jobs/stalker/application_job.rb'
-  add_filter 'app/mailers/stalker/application_mailer.rb'
-  add_filter 'app/models/stalker/application_record.rb'
-  add_filter '/app/channels'
   add_filter '/bin'
   add_filter '/coverage'
   add_filter '/db'
-  add_filter '/log'
-  add_filter '/tmp'
+  add_filter '/lib/stalker/version.rb'
 end
 
 SimpleCov.minimum_coverage 95

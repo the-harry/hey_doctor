@@ -13,9 +13,9 @@ module Stalker::Rack
 
     def status
       {
-        app: ::Stalker::ApplicationHealth.status,
-        database: ::Stalker::DatabaseHealth.status,
-        redis: ::Stalker::RedisHealth.status
+        app: ::Stalker::CheckApplicationHealthService.call,
+        database: ::Stalker::CheckDatabaseHealthService.call,
+        redis: ::Stalker::CheckRedisHealthService.call
       }.to_json
     end
   end

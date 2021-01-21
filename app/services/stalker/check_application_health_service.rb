@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Stalker::ApplicationHealth
+class Stalker::CheckApplicationHealthService
   class << self
     SUCCESS = {
       message: 'Application is running',
@@ -12,7 +12,7 @@ class Stalker::ApplicationHealth
       success: false
     }.freeze
 
-    def status
+    def call
       return SUCCESS if responding?
 
       ERROR

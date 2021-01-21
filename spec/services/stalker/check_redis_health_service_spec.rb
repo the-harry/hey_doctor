@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-RSpec.describe Stalker::RedisHealth do
-  describe '.status' do
+RSpec.describe Stalker::CheckRedisHealthService do
+  describe '.call' do
     context 'when it is connected' do
       let(:expected_response) do
         {
@@ -13,7 +13,7 @@ RSpec.describe Stalker::RedisHealth do
       end
 
       it 'respond with success' do
-        expect(described_class.status).to eq(expected_response)
+        expect(described_class.call).to eq(expected_response)
       end
     end
 
@@ -30,7 +30,7 @@ RSpec.describe Stalker::RedisHealth do
       end
 
       it 'respond with success' do
-        expect(described_class.status).to eq(expected_response)
+        expect(described_class.call).to eq(expected_response)
       end
     end
   end

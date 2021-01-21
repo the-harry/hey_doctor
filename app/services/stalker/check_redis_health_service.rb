@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Stalker::RedisHealth
+class Stalker::CheckRedisHealthService
   class << self
     SUCCESS = {
       message: 'Redis is connected',
@@ -12,7 +12,7 @@ class Stalker::RedisHealth
       success: false
     }.freeze
 
-    def status
+    def call
       return SUCCESS if connected?
 
       ERROR

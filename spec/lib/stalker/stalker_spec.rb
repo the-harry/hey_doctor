@@ -23,13 +23,13 @@ RSpec.describe '.Rack HealthCheck endpoint' do
   let(:env) { { 'REQUEST_METHOD' => 'GET', 'PATH_INFO' => '/_ah/health' } }
 
   before do
-    allow(Stalker::ApplicationHealth).to receive(:status)
+    allow(Stalker::CheckApplicationHealthService).to receive(:call)
       .and_return({ message: 'foo', success: true })
 
-    allow(Stalker::DatabaseHealth).to receive(:status)
+    allow(Stalker::CheckDatabaseHealthService).to receive(:call)
       .and_return({ message: 'foo', success: true })
 
-    allow(Stalker::RedisHealth).to receive(:status)
+    allow(Stalker::CheckRedisHealthService).to receive(:call)
       .and_return({ message: 'foo', success: true })
   end
 
