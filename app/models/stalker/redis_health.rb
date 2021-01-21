@@ -18,7 +18,7 @@ class Stalker::RedisHealth
       ERROR
     end
 
-  private
+    private
 
     def connected?
       Redis.current.get('viva_a_sociedade_alternativa')

@@ -46,16 +46,19 @@ And then execute:
 bundle install
 ```
 
-After installing the gem just mount the route:
+After installing the gem just mount the HealthCheck endpoint inside config.ru:
 
 ```ruby
-# config/routes.rb
+# config.ru
 
-Rails.application.routes.draw do
-  mount Stalker::Engine => "/_ah/health"
+# bunch of requires here
+require "stalker"
 
-  ...
+map '/_ah/health' do
+  run Stalker::Rack::HealthCheck.new
 end
+
+...
 ```
 
 ## Developing
