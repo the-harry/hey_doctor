@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe '.Stalker.health' do
+RSpec.describe '.Rack HealthCheck endpoint' do
   let(:expected_response) do
     {
       app: {
@@ -20,6 +20,8 @@ RSpec.describe '.Stalker.health' do
     }.to_json
   end
 
+  let(:env) { { 'REQUEST_METHOD' => 'GET', 'PATH_INFO' => '/_ah/health' } }
+
   before do
     allow(Stalker::ApplicationHealth).to receive(:status)
       .and_return({ message: 'foo', success: true })
@@ -32,6 +34,9 @@ RSpec.describe '.Stalker.health' do
   end
 
   it 'build the json response' do
-    expect(Stalker.health).to eq(expected_response)
+    response = Stalker::Rack::HealthCheck.new.call(env)
+    body = response[2].first
+
+    expect(body).to eq(expected_response)
   end
 end

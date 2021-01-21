@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'simplecov'
+require 'rack/test'
 
 SimpleCov.start 'rails' do
   add_filter '/app/models/application_record.rb'

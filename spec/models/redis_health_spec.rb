@@ -38,7 +38,7 @@ RSpec.describe Stalker::RedisHealth do
   describe '.connected?' do
     context 'when it is connected' do
       it 'respond with success' do
-        expect(described_class.connected?).to eq(true)
+        expect(described_class.send(:connected?)).to eq(true)
       end
     end
 
@@ -49,7 +49,7 @@ RSpec.describe Stalker::RedisHealth do
       end
 
       it 'respond with success' do
-        expect(described_class.connected?).to eq(false)
+        expect(described_class.send(:connected?)).to eq(false)
       end
     end
   end

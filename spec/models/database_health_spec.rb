@@ -34,12 +34,30 @@ RSpec.describe Stalker::DatabaseHealth do
         expect(described_class.status).to eq(expected_response)
       end
     end
+
+    context 'When migration is Pending' do
+      let(:expected_response) do
+        {
+          message: 'Pending migrations detected',
+          success: true
+        }
+      end
+
+      before do
+        allow(described_class).to receive(:connected?).and_return(true).twice
+        allow(described_class).to receive(:needs_migration?).and_return(true)
+      end
+
+      it 'respond with success' do
+        expect(described_class.status).to eq(expected_response)
+      end
+    end
   end
 
   describe '.connected?' do
     context 'when it is connected' do
       it 'respond with success' do
-        expect(described_class.connected?).to eq(true)
+        expect(described_class.send(:connected?)).to eq(true)
       end
     end
 
@@ -50,7 +68,23 @@ RSpec.describe Stalker::DatabaseHealth do
       end
 
       it 'respond with success' do
-        expect(described_class.connected?).to eq(false)
+        expect(described_class.send(:connected?)).to eq(false)
+      end
+    end
+  end
+
+  describe 'needs_migration?' do
+    context 'when migration is Pending' do
+      before do
+        allow(described_class).to receive(:connected?).and_return(true).twice
+
+        allow(ActiveRecord::Base).to receive_message_chain(
+          :connection, :migration_context, :needs_migration?
+        ).and_return(true)
+      end
+
+      it 'respond with success' do
+        expect(described_class.send(:needs_migration?)).to eq(true)
       end
     end
   end

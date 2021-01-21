@@ -2,11 +2,6 @@
 
 class Stalker::DatabaseHealth
   class << self
-    ERROR = {
-      message: 'Error connecting to database',
-      success: false
-    }.freeze
-
     SUCCESS = {
       message: 'Database is connected',
       success: true
@@ -15,6 +10,11 @@ class Stalker::DatabaseHealth
     MIGRATION_PENDING = {
       message: 'Pending migrations detected',
       success: true
+    }.freeze
+
+    ERROR = {
+      message: 'Error connecting to database',
+      success: false
     }.freeze
 
     def status
@@ -37,7 +37,7 @@ class Stalker::DatabaseHealth
     def needs_migration?
       return false unless connected?
 
-      ApplicationRecord.connection.migration_context.needs_migration?
+      ActiveRecord::Base.connection.migration_context.needs_migration?
     end
   end
 end

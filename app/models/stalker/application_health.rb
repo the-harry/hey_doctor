@@ -9,7 +9,7 @@ class Stalker::ApplicationHealth
 
     ERROR = {
       message: 'Application down, call the firefighters',
-      success: true
+      success: false
     }.freeze
 
     def status
