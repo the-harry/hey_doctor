@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'net/http'
 
-RSpec.describe Stalker::CheckApplicationHealthService do
+RSpec.describe HeyDoctor::CheckApplicationHealthService do
   describe '.call' do
     let(:http) { double }
 

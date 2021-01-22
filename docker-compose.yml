@@ -5,9 +5,9 @@ services:
     build:
       context: .
       dockerfile: .devops/dockerfiles/Dockerfile
-    command: "bundle exec rails s -b 0.0.0.0 -p 8000"
+    command: bash -c "(bundle check || bundle install) && bundle exec rails db:setup && rm -f tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0 -p 8000"
     volumes:
-      - .:/stalker
+      - .:/hey_doctor
     depends_on:
       - 'redis'
       - 'postgres'

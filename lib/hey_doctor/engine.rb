@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class Stalker::Engine < ::Rails::Engine
-  isolate_namespace Stalker
+class HeyDoctor::Engine < ::Rails::Engine
+  isolate_namespace HeyDoctor
   config.generators.api_only = true
 
   config.generators do |generators|

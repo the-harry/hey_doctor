@@ -1,6 +1,6 @@
 FROM ruby:2.5.3
 
-WORKDIR /stalker
+WORKDIR /hey_doctor
 
 RUN apt-get update && rm -rf /var/lib/apt/lists/*
 

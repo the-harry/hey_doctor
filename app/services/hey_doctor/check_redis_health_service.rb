@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Stalker::CheckRedisHealthService
+class HeyDoctor::CheckRedisHealthService
   class << self
     SUCCESS = {
       message: 'Redis is connected',

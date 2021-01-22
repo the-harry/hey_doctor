@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    stalker (1.0.0)
+    hey_doctor (1.0.0)
       rails (>= 4.2.10)
 
 GEM
@@ -201,7 +201,7 @@ DEPENDENCIES
   rspec-rails
   rubocop-rails
   simplecov
-  stalker!
+  hey_doctor!
 
 BUNDLED WITH
    2.2.6

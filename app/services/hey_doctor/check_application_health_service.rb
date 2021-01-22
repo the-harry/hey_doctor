@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Stalker::CheckApplicationHealthService
+class HeyDoctor::CheckApplicationHealthService
   class << self
     SUCCESS = {
       message: 'Application is running',

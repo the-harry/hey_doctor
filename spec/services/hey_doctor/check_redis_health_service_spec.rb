@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Stalker::CheckRedisHealthService do
+RSpec.describe HeyDoctor::CheckRedisHealthService do
   describe '.call' do
     context 'when it is connected' do
       let(:expected_response) do
