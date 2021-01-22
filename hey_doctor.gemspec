@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
                       'erick.nascimento@deliverycenter.com']
   spec.homepage    = 'https://github.com/deliverycenter/hey_doctor'
   spec.summary     = 'A health check gem implementation in ruby.'
-  spec.description = 'It mounts a midleware endpoint to check the stack health.'
+  spec.description = 'It mounts a middleware endpoint to check the stack health.'
   spec.license     = 'MIT'
 
   spec.metadata['homepage_uri'] = spec.homepage

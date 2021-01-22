@@ -1,5 +1,7 @@
 # HeyDoctor - doc c'mon man!
 
+![banner](banner.png)
+
 This is a simple stack health check for rails based applications, it mounts a endpoint with the current status of database, application and redis.
 
 ## Usage
