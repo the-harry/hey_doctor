@@ -29,7 +29,7 @@ After installing this gem it will mount a endpoint in `/_ah/health`, this will b
 
 ## Installation
 
-If you have a redis instance in you application add the following initializer to create a `Redis.current`, so it don't need to use global vars, or create a new connection each request:
+* If you have a redis instance in you application add the following initializer to create a `Redis.current`, so it don't need to use global vars, or create a new connection each request:
 
 ```ruby
 # config/initializers/redis.rb
@@ -37,18 +37,21 @@ If you have a redis instance in you application add the following initializer to
 Redis.current ||= Redis.new(url: ENV['REDIS_URL'])
 ```
 
-Add this line to your application's Gemfile:
+* Add a env var `RAILS_PORT` with the current application port.
+
+* Add this line to your application's Gemfile:
 
 ```ruby
 gem 'hey_doctor'
 ```
 
-And then execute:
+* And then execute:
+
 ```bash
 bundle install
 ```
 
-After installing the gem just mount the HealthCheck endpoint inside config.ru:
+* After installing the gem, mount the HealthCheck endpoint inside config.ru:
 
 ```ruby
 # config.ru
@@ -63,6 +66,16 @@ end
 ...
 ```
 
+* The last step is to mount the engine into your application, so if the application is down the middleware will notice:
+
+```ruby
+Rails.application.routes.draw do
+  mount HeyDoctor::Engine, at: '/_ah/app_health'
+
+  ...
+end
+```
+
 ## Developing
 
 ```bash
@@ -70,7 +83,7 @@ docker-compose build && docker-compose up
 
 docker-compose exec web bash
 
-rails db:setup
+bundle exec rake db:setup
 
 rubocop -A && rspec
 ```

@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root to: 'home#index'
+  mount HeyDoctor::Engine, at: '/_ah/app_health'
 end

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    hey_doctor (1.0.0)
+    hey_doctor (1.1.0)
       rails (>= 4.2.10)
 
 GEM
@@ -196,12 +196,12 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv-rails
+  hey_doctor!
   pg
   redis
   rspec-rails
   rubocop-rails
   simplecov
-  hey_doctor!
 
 BUNDLED WITH
    2.2.6
