@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    hey_doctor (1.1.0)
+    hey_doctor (1.1.1)
       rails (>= 4.2.10)
 
 GEM

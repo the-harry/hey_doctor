@@ -1,11 +1,5 @@
 # frozen_string_literal: true
 
-if Rails.version.to_f > 5.0
-  require 'rails/commands/server/server_command'
-else
-  require 'rails/commands/server'
-end
-
 class HeyDoctor::CheckApplicationHealthService
   class << self
     SUCCESS = {

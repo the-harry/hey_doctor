@@ -1,3 +1,3 @@
 HeyDoctor::Engine.routes.draw do
-  get '/', to: proc { [200, {}, ['']] }
+  root to: proc { [200, {}, ['']] }
 end
