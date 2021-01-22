@@ -23,18 +23,18 @@ RSpec.describe '.Rack HealthCheck endpoint' do
   let(:env) { { 'REQUEST_METHOD' => 'GET', 'PATH_INFO' => '/_ah/health' } }
 
   before do
-    allow(Stalker::CheckApplicationHealthService).to receive(:call)
+    allow(HeyDoctor::CheckApplicationHealthService).to receive(:call)
       .and_return({ message: 'foo', success: true })
 
-    allow(Stalker::CheckDatabaseHealthService).to receive(:call)
+    allow(HeyDoctor::CheckDatabaseHealthService).to receive(:call)
       .and_return({ message: 'foo', success: true })
 
-    allow(Stalker::CheckRedisHealthService).to receive(:call)
+    allow(HeyDoctor::CheckRedisHealthService).to receive(:call)
       .and_return({ message: 'foo', success: true })
   end
 
   it 'build the json response' do
-    response = Stalker::Rack::HealthCheck.new.call(env)
+    response = HeyDoctor::Rack::HealthCheck.new.call(env)
     body = response[2].first
 
     expect(body).to eq(expected_response)

@@ -1,4 +1,4 @@
-# Stalker
+# HeyDoctor - doc c'mon man!
 
 This is a simple stack health check for rails based applications, it mounts a endpoint with the current status of database, application and redis.
 
@@ -38,7 +38,7 @@ Redis.current ||= Redis.new(url: ENV['REDIS_URL'])
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'stalker'
+gem 'hey_doctor'
 ```
 
 And then execute:
@@ -52,10 +52,10 @@ After installing the gem just mount the HealthCheck endpoint inside config.ru:
 # config.ru
 
 # bunch of requires here
-require "stalker"
+require "hey_doctor"
 
 map '/_ah/health' do
-  run Stalker::Rack::HealthCheck.new
+  run HeyDoctor::Rack::HealthCheck.new
 end
 
 ...
@@ -77,11 +77,11 @@ Minimum coverage is set to 95%.
 
 ## Releasing
 
-Change the tag in `lib/stalker/version.rb` each release using [SEMVER](https://semver.org/lang/pt-BR/).
+Change the tag in `lib/hey_doctor/version.rb` each release using [SEMVER](https://semver.org/lang/pt-BR/).
 
 ```bash
 bundle exec rake build
-# build gem in pkg/stalker-TAG.gem
+# build gem in pkg/hey_doctor-TAG.gem
 
 bundle exec rake release
 # Ask for rubygems credentials and makes the release

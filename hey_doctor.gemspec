@@ -1,21 +1,21 @@
 # frozen_string_literal: true
 
-require_relative 'lib/stalker/version'
+require_relative 'lib/hey_doctor/version'
 
 Gem::Specification.new do |spec|
-  spec.name        = 'stalker'
-  spec.version     = Stalker::VERSION
+  spec.name        = 'hey_doctor'
+  spec.version     = HeyDoctor::VERSION
   spec.authors     = ['Matheus Acosta', 'Erick Nascimento']
   spec.email       = ['matheus.martins@deliverycenter.com',
                       'erick.nascimento@deliverycenter.com']
-  spec.homepage    = 'https://github.com/deliverycenter/stalker'
+  spec.homepage    = 'https://github.com/deliverycenter/hey_doctor'
   spec.summary     = 'A health check gem implementation in ruby.'
-  spec.description = 'It mounts a endpoint to check the stack health.'
+  spec.description = 'It mounts a midleware endpoint to check the stack health.'
   spec.license     = 'MIT'
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://github.com/deliverycenter/stalker'
-  spec.metadata['changelog_uri'] = 'https://github.com/deliverycenter/stalker'
+  spec.metadata['source_code_uri'] = 'https://github.com/deliverycenter/hey_doctor'
+  spec.metadata['changelog_uri'] = 'https://github.com/deliverycenter/hey_doctor'
 
   spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile',
                    'README.md']

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Stalker::CheckDatabaseHealthService
+class HeyDoctor::CheckDatabaseHealthService
   class << self
     SUCCESS = {
       message: 'Database is connected',
