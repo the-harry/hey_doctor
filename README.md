@@ -57,7 +57,7 @@ bundle install
 # config.ru
 
 # bunch of requires here
-require "hey_doctor"
+require 'hey_doctor'
 
 map '/_ah/health' do
   run HeyDoctor::Rack::HealthCheck.new
