@@ -9,14 +9,14 @@ services:
     volumes:
       - .:/hey_doctor
     depends_on:
-      - 'redis'
-      - 'postgres'
+      - redis
+      - postgres
     ports:
-      - '8000:8000'
+      - 8000:8000
     tty: true
     stdin_open: true
     env_file:
-      - 'spec/dummy/.env'
+      - spec/dummy/.env
 
   postgres:
     image: postgres:13.1-alpine

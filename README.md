@@ -37,6 +37,8 @@ After installing this gem it will mount a endpoint in `/_ah/health`, this will b
 Redis.current ||= Redis.new(url: ENV['REDIS_URL'])
 ```
 
+It is very important to use the env `REDIS_URL`, because it will be used to check whether or not to render the redis response.
+
 * Add a env var `RAILS_PORT` with the current application port.
 
 * Add this line to your application's Gemfile:

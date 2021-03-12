@@ -12,11 +12,16 @@ module HeyDoctor::Rack
     private
 
     def status
-      {
+      response = {
         app: ::HeyDoctor::CheckApplicationHealthService.call,
-        database: ::HeyDoctor::CheckDatabaseHealthService.call,
-        redis: ::HeyDoctor::CheckRedisHealthService.call
-      }.to_json
+        database: ::HeyDoctor::CheckDatabaseHealthService.call
+      }
+
+      unless ENV['REDIS_URL'].blank?
+        response.merge!({ redis: ::HeyDoctor::CheckRedisHealthService.call })
+      end
+
+      response.to_json
     end
   end
 end
