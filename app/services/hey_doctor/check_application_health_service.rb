@@ -27,7 +27,9 @@ class HeyDoctor::CheckApplicationHealthService
     end
 
     def app_http_code
-      Net::HTTP.start('localhost', ENV['RAILS_PORT']) do |http|
+      port = ENV['RAILS_PORT'] || ENV['PORT']
+
+      Net::HTTP.start('localhost', port) do |http|
         http.head('/_ah/app_health')
       end.code
     end
