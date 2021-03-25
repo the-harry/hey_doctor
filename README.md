@@ -39,7 +39,7 @@ Redis.current ||= Redis.new(url: ENV['REDIS_URL'])
 
 It is very important to use the env `REDIS_URL`, because it will be used to check whether or not to render the redis response.
 
-* Add a env var `RAILS_PORT` with the current application port.
+* Add a env var `RAILS_PORT` with the current application port, it will also work with the env `PORT` for backward compatibility with GAE applications.
 
 * Add this line to your application's Gemfile:
 
@@ -97,11 +97,22 @@ Minimum coverage is set to 95%.
 Change the tag in `lib/hey_doctor/version.rb` each release using [SEMVER](https://semver.org/lang/pt-BR/).
 
 ```bash
+# After merging the PR checkout to master branch and update it.
+git checkout master
+git pull
+
+# build gem in pkg/hey_doctor-TAG.gem (Also changes Gemfile.lock)
 bundle exec rake build
-# build gem in pkg/hey_doctor-TAG.gem
+
+# Add the changed files
+git add Gemfile.lock lib/hey_doctor/version.rb
+git commit -m "v0.0.0"
+
+# Create a new git tag
+git tag -a v0.0.0 -m "Description here."
 
 bundle exec rake release
-# Ask for rubygems credentials and makes the release
+# Ask for rubygems credentials and makes the release, push the commit and the tag
 ```
 ## Contributing
 
