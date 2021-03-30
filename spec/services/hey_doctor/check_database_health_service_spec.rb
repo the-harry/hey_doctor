@@ -7,8 +7,8 @@ RSpec.describe HeyDoctor::CheckDatabaseHealthService do
     context 'when it is connected' do
       let(:expected_response) do
         {
-          message: 'Database is connected',
-          success: true
+          success: true,
+          message: 'Database is connected'
         }
       end
 
@@ -20,8 +20,8 @@ RSpec.describe HeyDoctor::CheckDatabaseHealthService do
     context 'when it is not connected' do
       let(:expected_response) do
         {
-          message: 'Error connecting to database',
-          success: false
+          success: false,
+          message: 'Error connecting to database'
         }
       end
 
@@ -38,8 +38,8 @@ RSpec.describe HeyDoctor::CheckDatabaseHealthService do
     context 'When migration is Pending' do
       let(:expected_response) do
         {
-          message: 'Pending migrations detected',
-          success: true
+          success: true,
+          message: 'Pending migrations detected'
         }
       end
 

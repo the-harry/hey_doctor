@@ -3,13 +3,13 @@
 class HeyDoctor::CheckApplicationHealthService
   class << self
     SUCCESS = {
-      message: 'Application is running',
-      success: true
+      success: true,
+      message: 'Application is running'
     }.freeze
 
     ERROR = {
-      message: 'Application down, call the firefighters',
-      success: false
+      success: false,
+      message: 'Application down, call the firefighters'
     }.freeze
 
     def call

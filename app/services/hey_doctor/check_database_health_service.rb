@@ -3,18 +3,18 @@
 class HeyDoctor::CheckDatabaseHealthService
   class << self
     SUCCESS = {
-      message: 'Database is connected',
-      success: true
+      success: true,
+      message: 'Database is connected'
     }.freeze
 
     MIGRATION_PENDING = {
-      message: 'Pending migrations detected',
-      success: true
+      success: true,
+      message: 'Pending migrations detected'
     }.freeze
 
     ERROR = {
-      message: 'Error connecting to database',
-      success: false
+      success: false,
+      message: 'Error connecting to database'
     }.freeze
 
     def call

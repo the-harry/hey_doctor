@@ -16,8 +16,8 @@ RSpec.describe HeyDoctor::CheckApplicationHealthService do
     context 'When app is running' do
       let(:expected_response) do
         {
-          message: 'Application is running',
-          success: true
+          success: true,
+          message: 'Application is running'
         }
       end
 
@@ -31,8 +31,8 @@ RSpec.describe HeyDoctor::CheckApplicationHealthService do
     context 'When app is down' do
       let(:expected_response) do
         {
-          message: 'Application down, call the firefighters',
-          success: false
+          success: false,
+          message: 'Application down, call the firefighters'
         }
       end
 

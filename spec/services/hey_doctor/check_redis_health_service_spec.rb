@@ -7,8 +7,8 @@ RSpec.describe HeyDoctor::CheckRedisHealthService do
     context 'when it is connected' do
       let(:expected_response) do
         {
-          message: 'Redis is connected',
-          success: true
+          success: true,
+          message: 'Redis is connected'
         }
       end
 
@@ -20,8 +20,8 @@ RSpec.describe HeyDoctor::CheckRedisHealthService do
     context 'when it is not connected' do
       let(:expected_response) do
         {
-          message: 'Error connecting to redis',
-          success: false
+          success: false,
+          message: 'Error connecting to redis'
         }
       end
 

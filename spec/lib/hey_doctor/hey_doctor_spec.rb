@@ -6,17 +6,29 @@ RSpec.describe '.Rack HealthCheck endpoint' do
   let(:expected_response) do
     {
       app: {
-        message: 'foo',
-        success: true
+        success: true,
+        message: 'foo'
       },
       database: {
-        message: 'foo',
-        success: true
+        success: true,
+        message: 'foo'
       },
       redis: {
-        message: 'foo',
-        success: true
-      }
+        success: true,
+        message: 'foo'
+      },
+      sidekiq: [
+        {
+          success: true,
+          message: 'Sidekiq is connected',
+          host: 'dcsiloifoodcatalogimporter_sidekiq_1'
+        },
+        {
+          success: false,
+          message: 'Error connecting to sidekiq',
+          host: 'dcsiloifoodcatalogimporter_sidekiq_2'
+        }
+      ]
     }.to_json
   end
 
