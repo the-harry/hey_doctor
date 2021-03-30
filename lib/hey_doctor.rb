@@ -21,6 +21,12 @@ module HeyDoctor::Rack
         response.merge!({ redis: ::HeyDoctor::CheckRedisHealthService.call })
       end
 
+      unless ENV['SIDEKIQ_HOSTS'].blank?
+        response.merge!(
+          { sidekiq: ::HeyDoctor::CheckSidekiqHealthService.call }
+        )
+      end
+
       response.to_json
     end
   end
