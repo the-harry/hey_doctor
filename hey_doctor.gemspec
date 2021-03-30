@@ -26,6 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec-rails'
   spec.add_development_dependency 'rubocop-rails'
   spec.add_development_dependency 'simplecov'
+  spec.add_development_dependency 'pry'
 
   spec.required_ruby_version = '>= 2.5.3'
   spec.add_dependency 'mimemagic', '0.3.7'
