@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    hey_doctor (1.2.0)
+    hey_doctor (1.2.1)
       mimemagic (= 0.3.7)
       rails (>= 4.2.10)
 
@@ -211,4 +211,4 @@ DEPENDENCIES
   simplecov
 
 BUNDLED WITH
-   2.2.15
+   2.2.16
