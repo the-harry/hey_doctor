@@ -6,17 +6,29 @@ RSpec.describe '.Rack HealthCheck endpoint' do
   let(:expected_response) do
     {
       app: {
-        message: 'foo',
-        success: true
+        success: true,
+        message: 'foo'
       },
       database: {
-        message: 'foo',
-        success: true
+        success: true,
+        message: 'foo'
       },
       redis: {
-        message: 'foo',
-        success: true
-      }
+        success: true,
+        message: 'foo'
+      },
+      sidekiq: [
+        {
+          success: true,
+          message: 'Sidekiq is connected',
+          host: 'sidekiq_1'
+        },
+        {
+          success: false,
+          message: 'Error sidekiq',
+          host: 'sidekiq_2'
+        }
+      ]
     }.to_json
   end
 
@@ -24,13 +36,21 @@ RSpec.describe '.Rack HealthCheck endpoint' do
 
   before do
     allow(HeyDoctor::CheckApplicationHealthService).to receive(:call)
-      .and_return({ message: 'foo', success: true })
+      .and_return({ success: true, message: 'foo' })
 
     allow(HeyDoctor::CheckDatabaseHealthService).to receive(:call)
-      .and_return({ message: 'foo', success: true })
+      .and_return({ success: true, message: 'foo' })
 
     allow(HeyDoctor::CheckRedisHealthService).to receive(:call)
-      .and_return({ message: 'foo', success: true })
+      .and_return({ success: true, message: 'foo' })
+
+    allow(HeyDoctor::CheckSidekiqHealthService).to receive(:call)
+      .and_return(
+        [
+          { success: true, message: 'Sidekiq is connected', host: 'sidekiq_1' },
+          { success: false, message: 'Error sidekiq', host: 'sidekiq_2' }
+        ]
+      )
   end
 
   it 'build the json response' do

@@ -3,13 +3,13 @@
 class HeyDoctor::CheckRedisHealthService
   class << self
     SUCCESS = {
-      message: 'Redis is connected',
-      success: true
+      success: true,
+      message: 'Redis is connected'
     }.freeze
 
     ERROR = {
-      message: 'Error connecting to redis',
-      success: false
+      success: false,
+      message: 'Error connecting to redis'
     }.freeze
 
     def call

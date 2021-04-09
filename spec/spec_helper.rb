@@ -2,6 +2,7 @@
 
 require 'simplecov'
 require 'rack/test'
+require 'pry'
 
 SimpleCov.start 'rails' do
   add_filter '/bin'
