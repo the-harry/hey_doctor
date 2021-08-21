@@ -12,6 +12,8 @@ class HeyDoctor::CheckApplicationHealthService
       message: 'Application down, call the firefighters'
     }.freeze
 
+    DEFAULT_PORT = ENV['RAILS_PORT'] || ENV['PORT']
+
     def call
       return SUCCESS if responding?
 
@@ -21,17 +23,25 @@ class HeyDoctor::CheckApplicationHealthService
     private
 
     def responding?
-      app_http_code == '200'
+      app_http_code('localhost', DEFAULT_PORT) == 200
     rescue StandardError
       false
     end
 
-    def app_http_code
-      port = ENV['RAILS_PORT'] || ENV['PORT']
+    def app_http_code(location, port)
+      ssl = port.to_i == 443
 
-      Net::HTTP.start('localhost', port) do |http|
+      response = Net::HTTP.start(location, port, use_ssl: ssl) do |http|
         http.head('/_ah/app_health')
-      end.code
+      end
+
+      if response.is_a?(Net::HTTPRedirection)
+        location = response['location']&.match(/https:\/\/(\w+.\.\w+)\//)
+
+        return app_http_code(location[1], 443) unless location.nil?
+      end
+
+      response.code.to_i
     end
   end
 end

@@ -29,3 +29,7 @@ Metrics/BlockLength:
   Enabled: true
   Exclude:
     - spec/**/*
+
+Style/RegexpLiteral:
+  EnforcedStyle: slashes
+  AllowInnerSlashes: true
