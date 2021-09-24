@@ -11,7 +11,7 @@ SimpleCov.start 'rails' do
   add_filter '/lib/hey_doctor/version.rb'
 end
 
-SimpleCov.minimum_coverage 95
+SimpleCov.minimum_coverage 90
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
