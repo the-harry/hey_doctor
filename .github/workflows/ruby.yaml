@@ -1,0 +1,54 @@
+name: hey-doctor
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgresql://test_user:test_user_password@localhost/dummy_test
+
+    services:
+      db:
+        image: postgres
+        ports: ['5432:5432']
+        env:
+          POSTGRES_DB: dummy_test
+          POSTGRES_USER: test_user
+          POSTGRES_PASSWORD: test_user_password
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '2.5.3'
+
+    - name: Run Install
+      run: |
+        sudo apt-get -yqq install libpq-dev
+        gem update --system
+        gem install rake -v 13.0.1
+        gem install bundler -v "~>2.0"
+        bundle install
+
+    - name: Run Linter (rubocop)
+      run: |
+        bundle exec rubocop --format json -o report.json
+
+    - name: Run Tests (rspec)
+      run: |
+        bundle exec rake db:setup
+        bundle exec rspec --fail-fast
