@@ -81,6 +81,8 @@ end
 ## Developing
 
 ```bash
+docker network create dev-net # only the fist time you run this project
+
 docker-compose build && docker-compose up
 
 docker-compose exec web bash

@@ -7,6 +7,7 @@ Gem::Specification.new do |spec|
   spec.version     = HeyDoctor::VERSION
   spec.authors     = ['Matheus Acosta', 'Erick Nascimento']
   spec.email       = ['matheus.martins@deliverycenter.com',
+                      'matheusthebr@gmail.com',
                       'erick.nascimento@deliverycenter.com']
   spec.homepage    = 'https://github.com/deliverycenter/hey_doctor'
   spec.summary     = 'A health check gem implementation in ruby.'
